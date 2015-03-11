@@ -195,4 +195,3 @@ namespace Swift {
 	
 	SWIFTEN_API std::ostream& operator<<(std::ostream& os, const Swift::JID& j);
 }
-

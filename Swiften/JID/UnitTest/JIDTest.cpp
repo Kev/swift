@@ -28,6 +28,7 @@ class JIDTest : public CppUnit::TestFixture
 		CPPUNIT_TEST(testConstructorWithString_SpacesInNode);
 		CPPUNIT_TEST(testConstructorWithStrings);
 		CPPUNIT_TEST(testConstructorWithStrings_EmptyDomain);
+		CPPUNIT_TEST(testConstructorWithStrings_EmptyResource);
 		CPPUNIT_TEST(testIsBare);
 		CPPUNIT_TEST(testIsBare_NotBare);
 		CPPUNIT_TEST(testToBare);
@@ -147,7 +148,7 @@ class JIDTest : public CppUnit::TestFixture
 			CPPUNIT_ASSERT(!JID("   alice@wonderland.lit").isValid());
 			CPPUNIT_ASSERT(!JID("alice   @wonderland.lit").isValid());
 		}
-		
+
 		void testConstructorWithStrings() {
 			JID testling("foo", "bar", "baz");
 
@@ -158,6 +159,12 @@ class JIDTest : public CppUnit::TestFixture
 
 		void testConstructorWithStrings_EmptyDomain() {
 			JID testling("foo", "", "baz");
+
+			CPPUNIT_ASSERT(!testling.isValid());
+		}
+
+		void testConstructorWithStrings_EmptyResource() {
+			JID testling("foo", "bar", "");
 
 			CPPUNIT_ASSERT(!testling.isValid());
 		}

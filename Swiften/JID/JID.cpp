@@ -146,6 +146,9 @@ JID::JID(const std::string& node, const std::string& domain) : valid_(true), has
 }
 
 JID::JID(const std::string& node, const std::string& domain, const std::string& resource) : valid_(true), hasResource_(true) {
+	if (resource.empty()) {
+		valid_ = false;
+	}
 	nameprepAndSetComponents(node, domain, resource);
 }
 
